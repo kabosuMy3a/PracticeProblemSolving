@@ -1,0 +1,3 @@
+1. C++ random 사용법, long long도 가능
+2. long long도 오버플로우 일어남. 해결 어떻게? 구글 계산기는 오버플로우 없음
+3. Stress test & debugging
