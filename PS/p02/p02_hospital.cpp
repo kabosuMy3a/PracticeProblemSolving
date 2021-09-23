@@ -47,8 +47,10 @@ int main(){
 	long long walkable = buildings[0].num_people ;
 
 	while(true){
+		if(buildings_index_tail + 1 == n) break ;	
 		long long p = buildings[buildings_index_tail + 1].point ;
-		if(p > tail_point || buildings_index_tail + 1 == n){
+
+		if(p > tail_point){
 			break ; 
 		} else { 
 			walkable += buildings[++buildings_index_tail].num_people ; 
@@ -59,7 +61,7 @@ int main(){
 
 	while(true){
 		buildings_index_tail += 1 ;
-		if(buildings_index_tail >= n) break ; 
+		if(buildings_index_tail == n) break ; 
 
 		Building * b_included = &buildings[buildings_index_tail] ; 
 
