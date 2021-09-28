@@ -13,11 +13,6 @@ int main(){
 	int num_carrier = 0 ;
 	int w ;
 	while(std::cin >> w){
-		if(w > m || w<= 0) continue ;
-		if(w == m){
-			num_carrier += 1; 
-			continue ;
-		}
 		sorted_list.push_back(w);
 	}
 
@@ -43,7 +38,6 @@ int main(){
 	}
 
 	std::cout << num_carrier << std::endl ;
-
 
 	return 0 ;
 }

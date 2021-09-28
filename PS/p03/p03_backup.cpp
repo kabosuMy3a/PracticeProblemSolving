@@ -131,7 +131,7 @@ int main(){
 	int w; 
 	long long num_carrier = 0 ; 
 
-	/*
+	
 	while(std::cin >> w){
 		if(w > m || w <= 0) 
 			continue ;
@@ -141,8 +141,8 @@ int main(){
 		}
 		heaviestQueue.push(w);
 	}
-	*/
-
+	
+	/*
 	
 	std::random_device rd ;
 	std::mt19937 gen(rd()) ;
@@ -159,24 +159,16 @@ int main(){
 		fof << n << std::endl; 
 	}
 	
+	*/
 
 	long long sorted_list_size = 0 ;
 	int * sorted_list = heaviestQueue.make_sorted_list(&sorted_list_size);
-
-	/*
-	for(int i = 0 ; i < sorted_list_size ; i++){
-		std::cout << sorted_list[i] << std::endl ;
-	}
-	std::cout <<std::endl;
-	*/
-	
 
 	long long front = 0 ;
 	long long rear = sorted_list_size - 1;
 	
 	while(1){
 		if(front == rear){
-			std::cout << front <<" : f == r : " << rear << std::endl;
 			num_carrier += 1;
 			break ; 
 		} else if(front > rear){
@@ -185,10 +177,8 @@ int main(){
 			int f = sorted_list[front] ;
 			int r = sorted_list[rear] ;
 			if(f + r <= m){	
-				std::cout << front <<" : " << f << " + " <<  r << " = " << f+r << " : " << rear << std::endl ; 
 				rear -= 1 ;
 			} else {
-				std::cout << front << " : " << f << std::endl;
 			}
 			front += 1 ;
 			num_carrier += 1 ;
