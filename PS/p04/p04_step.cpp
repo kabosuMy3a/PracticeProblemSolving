@@ -132,6 +132,13 @@ void _merge(){
   	new_p_sz = new_p_idx ;
 }
 
+
+void solve2(){
+	//새로운 배열의 시작을 L로 하고
+	//배열의 끝을 R로 한다
+	//그러면 아래 방법보다 훨씬 쉽게 값을 구할 수 있다
+}
+
 void solve(){
 
 	long long p_idx = 1 ;
