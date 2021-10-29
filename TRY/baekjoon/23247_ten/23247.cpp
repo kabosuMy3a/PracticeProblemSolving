@@ -1,6 +1,7 @@
 #include <iostream>
 
-int grid[301][301] = {0} ;
+int grid[301][301] ;
+int s[301][301] ={0} ;
 int sol = 0 ;
 
 int main(){
@@ -22,16 +23,26 @@ int main(){
 			sx += n;
 		}
 
-		int total_sum[301] = {0} ;
+		std::cout << sx <<", " << sy << std::endl;
+
 		for(int i = sy ; i <= m ; i++){
-			int x_sum[301] = {0}; 
 			for(int j = sx ; j<=n ; j++){
-				x_sum[j] = x_sum[j-1] + grid[i][j];
-				total_sum[j] += x_sum[j] ; 
-				if(total_sum[j] == 10){
+							
+				s[i][j] = grid[i][j];
+
+				if(i != sy)
+					s[i][j] += s[i-1][j];
+				if(j != sx)
+					s[i][j] += s[i][j-1];
+
+				if(i != sy && j != sx){
+					s[i][j] -= s[i-1][j-1];
+				}
+
+				if(s[i][j] == 10){
 					sol += 1 ;
 					break; 
-				} else if(total_sum[j] > 10){
+				} else if(s[i][j] > 10){
 					break;
 				} 
 			}
