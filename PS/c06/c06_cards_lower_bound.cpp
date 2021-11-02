@@ -56,7 +56,7 @@ int main(){
 
  	for(int i = 1 ; i < N ; i++){
  		int cur = cards[i] ;
- 		long idx = std::lower_bound(lis, lis + lis_sz, cur) - lis;
+ 		int idx = std::lower_bound(lis, lis + lis_sz, cur) - lis;
 
  		if(idx == lis_sz){
  			lis_sz += 1;
