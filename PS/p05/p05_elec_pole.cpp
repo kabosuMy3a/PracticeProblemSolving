@@ -2,62 +2,56 @@
 #include <algorithm>
 #include <vector>
 
-int distance[100000] = {0} ;
 int N; int K ;
+int max_d ; int min_d = 1 ;
+int d_lower_bound = 0 ;
+int poles[100000] ;
 
-int get_min(int * idx){
-	int min = 2000000000;
-	for(int i = 0 ; i < N-1 ; i++){
-		int cur = distance[i] ;
-		if(cur == 0)
-			continue;
-		if(min > cur){
-			min = cur ;
-			*idx = i ;
+int check_update(int d){
+	int num_pole = 1 ;
+	int prev = poles[0] ;
+	for(int i = 1 ; i < N ; i++){
+		int cur = poles[i];
+		if(cur - prev >= d){
+			prev = cur ;
+			num_pole++ ;
 		}
 	}
-	return min ;
+	if(num_pole >= K){
+		d_lower_bound = d ;
+		return 1;
+	}
+	return 0 ;	
+}
+
+void find_d_lower_bound_with_binary_search(){
+
+	int mid = (max_d + min_d)/2 ;
+	int is_updated = check_update(mid);
+
+	if(mid == min_d) return ;
+
+	if(is_updated){
+		min_d = mid + 1 ;
+	} else {
+		max_d = mid - 1 ;
+	}
+
+	find_d_lower_bound_with_binary_search();
 }
 
 int main(){
 
 	std::cin >> N ; std::cin >> K ;
-	std::vector<int> poles ;
 	for(int i = 0 ; i < N  ; i++){
-		int pole ;
-		scanf("%d", &pole);
-		poles.push_back(pole);
+		int pole ; scanf("%d", &pole);
+		poles[i] = pole ;
 	}
 
-	std::sort(poles.begin(), poles.end());
-
-	for(int i = 0 ; i < N-1  ; i++){
-		distance[i] = poles[i+1] - poles[i] ;
-	}
-
-	int distance_size = N-1 ;
-	
-	while(true){
-		if(distance_size + 1 == K) 
-			break;
-		
-		int min_idx ;
-		int m = get_min(&min_idx);
-		
-		distance[min_idx] = 0 ;	
-
-		// 0인 애들 때문에 
-
-		distance_size -= 1 ;
-
-		for(int i = 0 ; i < N-1 ; i++){
-			std::cout << distance[i] << " ";
-		}
-		std::cout << std::endl;
-	}
-
-	int a;
-	std::cout << get_min(&a) << std::endl;
+	std::sort(poles, poles + N);
+	max_d = ((poles[N-1] - poles[0])/(K-1) + 1) + 1 ;
+	find_d_lower_bound_with_binary_search();
+	std::cout << d_lower_bound << std::endl ; 
 
 	return 0 ;
 }

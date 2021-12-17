@@ -95,12 +95,14 @@ void find_next(int num_until_find, int idx){
 
 int main(){
 	std::cin >> N ;
+
+	std::sort(words, words+ N);
+	
 	for(int i = 0 ; i < N ; i++){
 		std::cin >> words[i] ;
 		num_next_available[i] = -1 ;
 	}
-
-	std::sort(words, words+ N);
+	
 	int start_point = 0 ;
 	if(!input_init(&start_point)){
 		std::cout << 0 << std::endl;

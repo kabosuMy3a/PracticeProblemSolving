@@ -86,4 +86,5 @@ int main(){
 
  	revert(N);
  	print_solutions(N);
+ 	return 0;
 }
