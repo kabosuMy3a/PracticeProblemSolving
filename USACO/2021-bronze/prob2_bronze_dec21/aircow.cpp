@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <chrono>
 
 long long N ;
 long long ans = 0 ;
@@ -34,6 +35,7 @@ void get_ans(int s, int e){
 }
 
 int main(){
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 	std::ios_base::sync_with_stdio(0x0); 
 	std::cin.tie(0x0);
 
@@ -55,20 +57,11 @@ int main(){
 		return 0 ;
 	}
 
-	//int cur_consecutive_min = abs(prev) ;
-	//int cur_consecutive_min_idx = 0 ; 
 	for(int i = 1 ; i < N ; i++){
 		int cur = stalls[i] ;
 		if(cur * prev <= 0){
 			get_ans(start_idx, i);
 			start_idx = i; 
-			//cur_consecutive_min = abs(cur); 
-			//cur_consecutive_min_idx = i ;
-		} else {
-			/*if(cur_consecutive_min > cur){
-				cur_consecutive_min = abs(cur);
-				cur_consecutive_min_idx = i ;
-			}*/
 		}
 		prev = cur ;
 	}
@@ -76,6 +69,9 @@ int main(){
 	get_ans(start_idx, N);
 
 	std::cout << ans << std::endl;
+	std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
+	std::chrono::milliseconds milliSec = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	std::cout << milliSec.count() << std::endl;
 	return 0 ;
 
 }
