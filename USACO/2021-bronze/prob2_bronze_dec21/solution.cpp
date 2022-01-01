@@ -17,7 +17,7 @@ int main() {
 		std::cin >> t[i];
 	for (int i = 1; i <= N; ++i)
 		d[i] = p[i] - t[i];
-	int ans = 0;
+	long long ans = 0;
 	for (int i = 0; i <= N; ++i)
 		ans += abs(d[i] - d[i + 1]);
 	std::cout << ans / 2 << "\n";
