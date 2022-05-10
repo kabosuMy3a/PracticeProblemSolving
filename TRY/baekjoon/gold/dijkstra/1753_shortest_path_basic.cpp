@@ -32,10 +32,11 @@ int main(){
 	}
 
 	distance[start] = 0 ;
-	pq.push({start, 0});
+	pq.push({0, start});
 
 	while(!pq.empty()){
 		std::pair<int, int> cur = pq.top();
+        cur = {cur.second, cur.first};
 		pq.pop();
 		if(processed[cur.first]) continue ;
 		processed[cur.first] = 1 ;
@@ -43,11 +44,10 @@ int main(){
 		for(auto next : adj_graph[cur.first]){
 			int nw = next.second ;
 			int relax = nw + distance[cur.first];
-			if(distance[next.first] > relax){
+			if(distance[next.first] > relax){ 
 				distance[next.first] = relax ;
-				pq.push({next.first, -distance[next.first]});
-			}
-
+			    pq.push({-distance[next.first], next.first});
+            }
 		}
 	}
 
