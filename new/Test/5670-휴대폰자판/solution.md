@@ -44,7 +44,7 @@ hell 까지 입력한 경우 hell 에서 끝낼 수도, 하나를 더 눌러서 
         }
 
         const nextKeys = Object.keys(node.next);
-        //출발선이 갈림길인 경우 예외처리, 갈림길, 경유지
+        //출발선이 갈림길이거나 경유지인 경우 예외처리, 갈림길, 경유지
         if(node !== this.root && nextKeys.length > 1 || (nextKeys.length === 1 && node.isEnd)){
             pressed += 1;
         }
