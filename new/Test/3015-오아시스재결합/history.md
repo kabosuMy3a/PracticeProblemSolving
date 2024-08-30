@@ -1,4 +1,4 @@
-오아시스 재결합 소식을 들은 상태에서 문제를 발견했기 때문에 그냥 넘어갈 수 없었다...
+오아시스 재결합 소식을 들은 상태에서 문제를 발견했기 때문에 그냥 넘어갈 수 없었다...  
 [오아시스 재결합](https://www.acmicpc.net/problem/3015) 문제는 풀이없이 접근했을 때, 까다로운 문제였다.
 
 # Abstract 
@@ -49,9 +49,7 @@ for(let i = 0; i < heights.length ; i++){
 console.log(ans);
 ```
 
-
-정해도 설명들이 좀 애매해서 이해하기 어려웠다. 코드보고 이해하는 게 더 쉬운 느낌이었다.  
-https://justicehui.github.io/coi/2018/11/06/BOJ3015/ 기본적으로 이해하기 좋았던 글
+[기본적으로 이해하기 좋았던 글](https://justicehui.github.io/coi/2018/11/06/BOJ3015/)
 
 
 전제 
